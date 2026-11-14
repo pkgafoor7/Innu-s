@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Innu's Foods — Traditional Taste of Kerala</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --emerald-deep: #134631;
+            --emerald-dark: #0D3323;
+            --parchment: #FAF7F0;
+            --parchment-dark: #F0EAE0;
+            --gold-turmeric: #C59B27;
+        }
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--parchment);
+            color: #1A2E25;
+        }
+        .font-display {
+            font-family: 'Cinzel', serif;
+        }
+        .bg-emerald-brand {
+            background-color: var(--emerald-deep);
+        }
+        .text-emerald-brand {
+            color: var(--emerald-deep);
+        }
+        .border-gold-brand {
+            border-color: var(--gold-turmeric);
+        }
+        .text-gold-brand {
+            color: var(--gold-turmeric);
+        }
+        .bg-gold-brand {
+            background-color: var(--gold-turmeric);
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col">
+
+    <!-- Top Utility Bar -->
+    <div class="bg-[#0D3323] text-[#FAF7F0] text-xs py-2 px-4">
+        <div class="max-w-6xl mx-auto flex flex-wrap justify-between items-center gap-2">
+            <span>Authentic Homemade Kerala Snacks &amp; Pure Spices</span>
+            <button onclick="openSettingsModal()" class="underline hover:text-[#C59B27] transition flex items-center gap-1">
+                <span>Store WhatsApp: <strong id="header-wa-display">+966 50 000 0000</strong> (Edit)</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- Header / Navbar -->
+    <header class="bg-emerald-brand text-[#FAF7F0] sticky top-0 z-40 shadow-md">
+        <div class="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
+            <div class="flex items-center gap-3">
+                <!-- Custom SVG Kerala Palm & Spice Emblem -->
+                <div class="w-12 h-12 rounded-full bg-[#FAF7F0] p-1 flex items-center justify-center border-2 border-gold-brand shrink-0">
+                    <svg viewBox="0 0 100 100" class="w-full h-full">
+                        <circle cx="50" cy="50" r="46" fill="none" stroke="#134631" stroke-width="3"/>
+                        <!-- Palm Fronds -->
+                        <path d="M50 45 C30 25, 15 35, 12 45 C25 40, 38 40, 50 45 Z" fill="#134631"/>
+                        <path d="M50 45 C35 18, 22 20, 18 28 C30 26, 40 32, 50 45 Z" fill="#1E6B4B"/>
+                        <path d="M50 45 C70 25, 85 35, 88 45 C75 40, 62 40, 50 45 Z" fill="#134631"/>
+                        <path d="M50 45 C65 18, 78 20, 82 28 C70 26, 60 32, 50 45 Z" fill="#1E6B4B"/>
+                        <path d="M50 45 C42 15, 58 15, 50 45 Z" fill="#C59B27"/>
+                        <!-- Trunk -->
+                        <path d="M48 45 Q52 65 44 82 L52 82 Q58 65 52 45 Z" fill="#134631"/>
+                        <!-- Peppercorns & Cardamom -->
+                        <circle cx="32" cy="64" r="4" fill="#134631"/>
+                        <circle cx="25" cy="70" r="3.5" fill="#134631"/>
+                        <circle cx="35" cy="73" r="3.5" fill="#134631"/>
+                        <ellipse cx="70" cy="65" rx="6" ry="3.5" transform="rotate(-30 70 65)" fill="#588157"/>
+                        <ellipse cx="74" cy="73" rx="5.5" ry="3" transform="rotate(-15 74 73)" fill="#C59B27"/>
+                    </svg>
+                </div>
+                <div>
+                    <h1 class="font-display text-xl sm:text-2xl font-bold tracking-wide text-[#FAF7F0]">INNU'S FOODS</h1>
+                    <p class="text-[11px] sm:text-xs tracking-[0.2em] text-[#C59B27] uppercase font-semibold">Traditional Taste of Kerala</p>
+                </div>
+            </div>
+
+            <button onclick="toggleCart()" class="relative bg-[#C59B27] hover:bg-[#b0881e] text-[#0D3323] font-bold px-4 py-2.5 rounded-full flex items-center gap-2 transition shadow">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+                </svg>
+                <span class="hidden sm:inline">Basket</span>
+                <span id="cart-badge" class="bg-[#134631] text-[#FAF7F0] text-xs font-bold px-2 py-0.5 rounded-full">0</span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="bg-[#F0EAE0] border-b border-[#DED5C5] py-10 px-4">
+        <div class="max-w-6xl mx-auto text-center max-w-2xl">
+            <span class="inline-block px-3 py-1 bg-[#134631]/10 text-emerald-brand text-xs font-bold uppercase tracking-wider rounded-full mb-3">
+                Handcrafted in Small Batches
+            </span>
+            <h2 class="font-display text-3xl sm:text-4xl font-bold text-emerald-brand mb-3">
+                Authentic Flavors from God's Own Country
+            </h2>
+            <p class="text-sm sm:text-base text-[#3A4F45] mb-6">
+                Crispy coconut-oil fried snacks and freshly ground Malabar masalas delivered straight to your doorstep. Select your favorites and order directly via WhatsApp.
+            </p>
+            <!-- Category Filters -->
+            <div class="flex flex-wrap justify-center gap-2" id="category-filters">
+                <button onclick="filterProducts('all')" data-cat="all" class="filter-btn active px-5 py-2 rounded-full text-sm font-semibold bg-emerald-brand text-[#FAF7F0] transition">
+                    All Products
+                </button>
+                <button onclick="filterProducts('snacks')" data-cat="snacks" class="filter-btn px-5 py-2 rounded-full text-sm font-semibold bg-white text-emerald-brand border border-[#134631]/20 hover:border-emerald-brand transition">
+                    Traditional Snacks
+                </button>
+                <button onclick="filterProducts('masalas')" data-cat="masalas" class="filter-btn px-5 py-2 rounded-full text-sm font-semibold bg-white text-emerald-brand border border-[#134631]/20 hover:border-emerald-brand transition">
+                    Authentic Masalas
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Product Grid -->
+    <main class="max-w-6xl mx-auto px-4 py-10 flex-grow w-full">
+        <div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <!-- Rendered by JS -->
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-emerald-brand text-[#FAF7F0]/80 py-8 px-4 text-center text-sm mt-12">
+        <p class="font-display text-lg text-[#FAF7F0] font-bold">INNU'S FOODS</p>
+        <p class="text-xs text-[#C59B27] tracking-widest uppercase mt-1 mb-4">Traditional Taste of Kerala</p>
+        <p class="text-xs">&copy; 2026 Innu's Foods. All rights reserved. Orders fulfilled via WhatsApp.</p>
+    </footer>
+
+    <!-- Slide-Over Cart Drawer -->
+    <div id="cart-drawer" class="fixed inset-0 z-50 hidden">
+        <div class="fixed inset-0 bg-black/50 backdrop-blur-xs" onclick="toggleCart()"></div>
+        <div class="fixed right-0 top-0 bottom-0 w-full max-w-md bg-[#FAF7F0] shadow-2xl flex flex-col z-10">
+            <div class="bg-emerald-brand text-[#FAF7F0] px-6 py-4 flex justify-between items-center">
+                <h3 class="font-display text-lg font-bold">Your Order Basket</h3>
+                <button onclick="toggleCart()" class="text-[#FAF7F0] hover:text-[#C59B27] text-2xl leading-none">&times;</button>
+            </div>
+
+            <div id="cart-items" class="flex-grow overflow-y-auto p-6 space-y-4">
+                <!-- Cart items injected here -->
+            </div>
+
+            <div class="border-t border-[#DED5C5] p-6 bg-[#F0EAE0] space-y-4">
+                <div class="flex justify-between items-center text-lg font-bold text-emerald-brand">
+                    <span>Total Amount</span>
+                    <span id="cart-total">SAR 0.00</span>
+                </div>
+
+                <div class="space-y-2.5">
+                    <input type="text" id="cust-name" placeholder="Your Full Name *" class="w-full px-3.5 py-2.5 rounded-lg border border-[#C9BFA9] bg-white text-sm focus:outline-none focus:border-emerald-brand">
+                    <textarea id="cust-address" rows="2" placeholder="Delivery Address / City / Landmark *" class="w-full px-3.5 py-2.5 rounded-lg border border-[#C9BFA9] bg-white text-sm focus:outline-none focus:border-emerald-brand"></textarea>
+                    <input type="text" id="cust-notes" placeholder="Special instructions (optional)" class="w-full px-3.5 py-2.5 rounded-lg border border-[#C9BFA9] bg-white text-sm focus:outline-none focus:border-emerald-brand">
+                </div>
+
+                <button onclick="sendWhatsAppOrder()" class="w-full bg-[#25D366] hover:bg-[#1ebe5d] text-white font-bold py-3.5 px-4 rounded-xl shadow-md flex items-center justify-center gap-2 transition cursor-pointer">
+                    <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86s.274.072.376-.043c.101-.116.433-.506.549-.68.116-.173.231-.145.39-.087s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.1.824z"/></svg>
+                    <span>Send Order on WhatsApp</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Store WhatsApp Number Config Modal -->
+    <div id="settings-modal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4">
+        <div class="fixed inset-0 bg-black/50" onclick="closeSettingsModal()"></div>
+        <div class="bg-white rounded-2xl max-w-sm w-full p-6 relative z-10 shadow-xl">
+            <h4 class="font-display text-lg font-bold text-emerald-brand mb-2">Configure Store WhatsApp</h4>
+            <p class="text-xs text-gray-600 mb-4">Enter your business WhatsApp number with country code (digits only, e.g. 966501234567) to receive customer orders.</p>
+            <input type="text" id="wa-number-input" placeholder="966500000000" class="w-full px-3.5 py-2.5 border rounded-lg text-sm mb-4">
+            <div class="flex justify-end gap-2">
+                <button onclick="closeSettingsModal()" class="px-4 py-2 text-sm text-gray-600 hover:bg-gray-100 rounded-lg">Cancel</button>
+                <button onclick="saveWhatsAppNumber()" class="px-4 py-2 text-sm bg-emerald-brand text-white font-semibold rounded-lg">Save Number</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Default Store WhatsApp Number (Replace with your actual number in code or via UI)
+        let storeWhatsApp = localStorage.getItem('innus_wa_number') || '966500000000';
+
+        const products = [
+            {
+                id: 1,
+                name: "Nendran Banana Chips",
+                category: "snacks",
+                weight: "250g",
+                price: 15.00,
+                desc: "Thinly sliced raw Nendran bananas fried in 100% pure Kerala coconut oil with a pinch of turmeric & salt.",
+                color: "#F3D37A",
+                accent: "#C59B27"
+            },
+            {
+                id: 2,
+                name: "Sharkara Varatti (Jaggery Chips)",
+                category: "snacks",
+                weight: "250g",
+                price: 18.00,
+                desc: "Thick-cut banana chips coated in melted dark jaggery, dry ginger (chukku), and aromatic cardamom.",
+                color: "#6B3E26",
+                accent: "#3D2214"
+            },
+            {
+                id: 3,
+                name: "Achappam (Rose Cookies)",
+                category: "snacks",
+                weight: "200g (12 pcs)",
+                price: 14.00,
+                desc: "Traditional crispy rosette cookies made with roasted rice flour, fresh coconut milk, and black sesame.",
+                color: "#E8B878",
+                accent: "#9C662B"
+            },
+            {
+                id: 4,
+                name: "Kuzhalappam",
+                category: "snacks",
+                weight: "200g",
+                price: 14.00,
+                desc: "Crunchy rolled rice crisps infused with roasted cumin seeds, shallots, and grated coconut.",
+                color: "#DDA76A",
+                accent: "#8A531E"
+            },
+            {
+                id: 5,
+                name: "Malabar Biryani Masala",
+                category: "masalas",
+                weight: "100g",
+                price: 16.00,
+                desc: "Slow-roasted & stone-ground blend of green cardamom, cloves, cinnamon, star anise, and mace.",
+                color: "#8C5828",
+                accent: "#4A2C11"
+            },
+            {
+                id: 6,
+                name: "Kerala Fish Curry Masala",
+                category: "masalas",
+                weight: "150g",
+                price: 15.00,
+                desc: "Authentic Kozhikode-style spice mix with Kashmiri chilli, coriander, fenugreek, and Tellicherry pepper.",
+                color: "#B83B28",
+                accent: "#731D10"
+            },
+            {
+                id: 7,
+                name: "Roasted Chicken Masala",
+                category: "masalas",
+                weight: "150g",
+                price: 15.00,
+                desc: "Rich aromatic spice blend crafted for traditional Varutharacha Kozhi Curry and Kerala chicken roast.",
+                color: "#A34824",
+                accent: "#5C230D"
+            },
+            {
+                id: 8,
+                name: "Wayandan Black Pepper Powder",
+                category: "masalas",
+                weight: "100g",
+                price: 18.00,
+                desc: "Single-origin bold Wayanad black peppercorns, sun-dried and freshly ground for maximum aroma.",
+                color: "#363938",
+                accent: "#181A19"
+            }
+        ];
+
+        let cart = {};
+        let currentFilter = 'all';
+
+        function updateHeaderWaDisplay() {
+            document.getElementById('header-wa-display').textContent = '+' + storeWhatsApp;
+        }
+
+        function getProductIllustration(p) {
+            return `
+                <svg viewBox="0 0 200 130" class="w-full h-36 object-cover rounded-t-xl" style="background-color: ${p.color}25;">
+                    <circle cx="100" cy="65" r="45" fill="${p.color}" opacity="0.35"/>
+                    <circle cx="100" cy="65" r="32" fill="${p.color}"/>
+                    <path d="M75 65 Q100 40 125 65 Q100 90 75 65 Z" fill="${p.accent}" opacity="0.65"/>
+                    <circle cx="92" cy="60" r="4" fill="#FAF7F0" opacity="0.8"/>
+                    <circle cx="108" cy="68" r="3" fill="#FAF7F0" opacity="0.8"/>
+                </svg>
+            `;
+        }
+
+        function renderProducts() {
+            const grid = document.getElementById('product-grid');
+            const filtered = currentFilter === 'all'
+                ? products
+                : products.filter(p => p.category === currentFilter);
+
+            grid.innerHTML = filtered.map(p => {
+                const qty = cart[p.id] || 0;
+                return `
+                    <div class="bg-white rounded-xl border border-[#E5DEC9] shadow-xs hover:shadow-md transition flex flex-col justify-between overflow-hidden">
+                        <div>
+                            <div class="relative">
+                                ${getProductIllustration(p)}
+                                <span class="absolute top-3 left-3 bg-[#134631] text-[#FAF7F0] text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full">
+                                    ${p.category}
+                                </span>
+                                <span class="absolute bottom-2 right-3 bg-white/90 text-emerald-brand text-xs font-semibold px-2 py-0.5 rounded">
+                                    ${p.weight}
+                                </span>
+                            </div>
+                            <div class="p-4">
+                                <h3 class="font-bold text-base text-emerald-brand mb-1">${p.name}</h3>
+                                <p class="text-xs text-gray-600 line-clamp-3 leading-relaxed">${p.desc}</p>
+                            </div>
+                        </div>
+
+                        <div class="px-4 pb-4 pt-2 flex items-center justify-between border-t border-gray-100">
+                            <span class="font-bold text-emerald-brand">SAR ${p.price.toFixed(2)}</span>
+                            ${qty === 0 ? `
+                                <button onclick="updateQty(${p.id}, 1)" class="bg-emerald-brand hover:bg-[#0D3323] text-[#FAF7F0] text-xs font-semibold px-3.5 py-2 rounded-lg transition cursor-pointer">
+                                    + Add
+                                </button>
+                            ` : `
+                                <div class="flex items-center gap-2 bg-[#F0EAE0] rounded-lg px-2 py-1">
+                                    <button onclick="updateQty(${p.id}, -1)" class="w-6 h-6 rounded bg-white text-emerald-brand font-bold hover:bg-gray-100 cursor-pointer">-</button>
+                                    <span class="text-xs font-bold w-4 text-center">${qty}</span>
+                                    <button onclick="updateQty(${p.id}, 1)" class="w-6 h-6 rounded bg-emerald-brand text-white font-bold hover:bg-[#0D3323] cursor-pointer">+</button>
+                                </div>
+                            `}
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function filterProducts(cat) {
+            currentFilter = cat;
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                if (btn.dataset.cat === cat) {
+                    btn.classList.add('bg-emerald-brand', 'text-[#FAF7F0]');
+                    btn.classList.remove('bg-white', 'text-emerald-brand');
+                } else {
+                    btn.classList.remove('bg-emerald-brand', 'text-[#FAF7F0]');
+                    btn.classList.add('bg-white', 'text-emerald-brand');
+                }
+            });
+            renderProducts();
+        }
+
+        function updateQty(id, delta) {
+            const newQty = (cart[id] || 0) + delta;
+            if (newQty <= 0) {
+                delete cart[id];
+            } else {
+                cart[id] = newQty;
+            }
+            renderProducts();
+            renderCart();
+        }
+
+        function renderCart() {
+            const container = document.getElementById('cart-items');
+            const badge = document.getElementById('cart-badge');
+            const totalEl = document.getElementById('cart-total');
+
+            const entries = Object.entries(cart);
+            let totalCount = 0;
+            let totalPrice = 0;
+
+            if (entries.length === 0) {
+                container.innerHTML = `
+                    <div class="text-center py-12 text-gray-500">
+                        <p class="font-semibold mb-1">Your basket is empty</p>
+                        <p class="text-xs">Add some delicious Kerala snacks or masalas to get started!</p>
+                    </div>
+                `;
+                badge.textContent = '0';
+                totalEl.textContent = 'SAR 0.00';
+                return;
+            }
+
+            container.innerHTML = entries.map(([id, qty]) => {
+                const item = products.find(p => p.id == id);
+                const subtotal = item.price * qty;
+                totalCount += qty;
+                totalPrice += subtotal;
+
+                return `
+                    <div class="flex items-center justify-between bg-white p-3 rounded-xl border border-[#E5DEC9]">
+                        <div>
+                            <h4 class="font-bold text-sm text-emerald-brand">${item.name}</h4>
+                            <p class="text-xs text-gray-500">${item.weight} &bull; SAR ${item.price.toFixed(2)} each</p>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <button onclick="updateQty(${item.id}, -1)" class="w-7 h-7 rounded bg-[#F0EAE0] text-emerald-brand font-bold">-</button>
+                            <span class="text-sm font-bold w-5 text-center">${qty}</span>
+                            <button onclick="updateQty(${item.id}, 1)" class="w-7 h-7 rounded bg-emerald-brand text-white font-bold">+</button>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+
+            badge.textContent = totalCount;
+            totalEl.textContent = `SAR ${totalPrice.toFixed(2)}`;
+        }
+
+        function toggleCart() {
+            document.getElementById('cart-drawer').classList.toggle('hidden');
+        }
+
+        function sendWhatsAppOrder() {
+            const entries = Object.entries(cart);
+            if (entries.length === 0) {
+                alert('Please add at least one item to your basket first.');
+                return;
+            }
+
+            const name = document.getElementById('cust-name').value.trim();
+            const address = document.getElementById('cust-address').value.trim();
+            const notes = document.getElementById('cust-notes').value.trim();
+
+            if (!name || !address) {
+                alert('Please enter your Name and Delivery Address.');
+                return;
+            }
+
+            let total = 0;
+            let lines = [
+                `*NEW ORDER — INNU'S FOODS*`,
+                `_Traditional Taste of Kerala_`,
+                `--------------------------`,
+                `*Customer:* ${name}`,
+                `*Address:* ${address}`
+            ];
+
+            if (notes) lines.push(`*Notes:* ${notes}`);
+            lines.push(`--------------------------`, `*Order Items:*`);
+
+            entries.forEach(([id, qty], idx) => {
+                const item = products.find(p => p.id == id);
+                const sub = item.price * qty;
+                total += sub;
+                lines.push(`${idx + 1}. ${item.name} (${item.weight}) x ${qty} = SAR ${sub.toFixed(2)}`);
+            });
+
+            lines.push(`--------------------------`);
+            lines.push(`*Total Payable: SAR ${total.toFixed(2)}*`);
+
+            const message = encodeURIComponent(lines.join('\n'));
+            const cleanNumber = storeWhatsApp.replace(/[^0-9]/g, '');
+            window.open(`https://wa.me/${cleanNumber}?text=${message}`, '_blank');
+        }
+
+        function openSettingsModal() {
+            document.getElementById('wa-number-input').value = storeWhatsApp;
+            document.getElementById('settings-modal').classList.remove('hidden');
+        }
+
+        function closeSettingsModal() {
+            document.getElementById('settings-modal').classList.add('hidden');
+        }
+
+        function saveWhatsAppNumber() {
+            const val = document.getElementById('wa-number-input').value.replace(/[^0-9]/g, '');
+            if (val.length < 8) {
+                alert('Please enter a valid phone number including country code (e.g. 966501234567).');
+                return;
+            }
+            storeWhatsApp = val;
+            localStorage.setItem('innus_wa_number', val);
+            updateHeaderWaDisplay();
+            closeSettingsModal();
+        }
+
+        // Initialize
+        updateHeaderWaDisplay();
+        renderProducts();
+        renderCart();
+    </script>
+</body>
+</html>
