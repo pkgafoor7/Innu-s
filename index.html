@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Innu's Foods — Traditional Taste of Kerala</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Noto+Sans+Malayalam:wght@500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
             --emerald-deep: #134631;
@@ -15,7 +15,7 @@
             --gold-turmeric: #C59B27;
         }
         body {
-            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-family: 'Plus Jakarta Sans', 'Noto Sans Malayalam', sans-serif;
             background-color: var(--parchment);
             color: #1A2E25;
         }
@@ -37,6 +37,9 @@
         .bg-gold-brand {
             background-color: var(--gold-turmeric);
         }
+        .arched-frame {
+            border-radius: 9999px 9999px 14px 14px;
+        }
     </style>
 </head>
 <body class="min-h-screen flex flex-col">
@@ -45,8 +48,8 @@
     <div class="bg-[#0D3323] text-[#FAF7F0] text-xs py-2 px-4">
         <div class="max-w-6xl mx-auto flex flex-wrap justify-between items-center gap-2">
             <span>Authentic Homemade Kerala Snacks &amp; Pure Spices</span>
-            <button onclick="openSettingsModal()" class="underline hover:text-[#C59B27] transition flex items-center gap-1">
-                <span>Store WhatsApp: <strong id="header-wa-display">+966 50 000 0000</strong> (Edit)</span>
+            <button onclick="openSettingsModal()" class="underline hover:text-[#C59B27] transition flex items-center gap-1 cursor-pointer">
+                <span>Store WhatsApp: <strong id="header-wa-display">+966 53 864 5336</strong> (Edit)</span>
             </button>
         </div>
     </div>
@@ -81,7 +84,7 @@
                 </div>
             </div>
 
-            <button onclick="toggleCart()" class="relative bg-[#C59B27] hover:bg-[#b0881e] text-[#0D3323] font-bold px-4 py-2.5 rounded-full flex items-center gap-2 transition shadow">
+            <button onclick="toggleCart()" class="relative bg-[#C59B27] hover:bg-[#b0881e] text-[#0D3323] font-bold px-4 py-2.5 rounded-full flex items-center gap-2 transition shadow cursor-pointer">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
                 </svg>
@@ -101,18 +104,18 @@
                 Authentic Flavors from God's Own Country
             </h2>
             <p class="text-sm sm:text-base text-[#3A4F45] mb-6">
-                Crispy coconut-oil fried snacks and freshly ground Malabar masalas delivered straight to your doorstep. Select your favorites and order directly via WhatsApp.
+                Traditional Malabar snacks and freshly ground masalas prepared with care. Select your favorites and order directly via WhatsApp.
             </p>
             <!-- Category Filters -->
             <div class="flex flex-wrap justify-center gap-2" id="category-filters">
-                <button onclick="filterProducts('all')" data-cat="all" class="filter-btn active px-5 py-2 rounded-full text-sm font-semibold bg-emerald-brand text-[#FAF7F0] transition">
-                    All Products
+                <button onclick="filterProducts('all')" data-cat="all" class="filter-btn active px-5 py-2 rounded-full text-sm font-semibold bg-emerald-brand text-[#FAF7F0] transition cursor-pointer">
+                    All Products (11)
                 </button>
-                <button onclick="filterProducts('snacks')" data-cat="snacks" class="filter-btn px-5 py-2 rounded-full text-sm font-semibold bg-white text-emerald-brand border border-[#134631]/20 hover:border-emerald-brand transition">
-                    Traditional Snacks
+                <button onclick="filterProducts('snacks')" data-cat="snacks" class="filter-btn px-5 py-2 rounded-full text-sm font-semibold bg-white text-emerald-brand border border-[#134631]/20 hover:border-emerald-brand transition cursor-pointer">
+                    Traditional Snacks (9)
                 </button>
-                <button onclick="filterProducts('masalas')" data-cat="masalas" class="filter-btn px-5 py-2 rounded-full text-sm font-semibold bg-white text-emerald-brand border border-[#134631]/20 hover:border-emerald-brand transition">
-                    Authentic Masalas
+                <button onclick="filterProducts('masalas')" data-cat="masalas" class="filter-btn px-5 py-2 rounded-full text-sm font-semibold bg-white text-emerald-brand border border-[#134631]/20 hover:border-emerald-brand transition cursor-pointer">
+                    Authentic Masalas (2)
                 </button>
             </div>
         </div>
@@ -120,7 +123,7 @@
 
     <!-- Product Grid -->
     <main class="max-w-6xl mx-auto px-4 py-10 flex-grow w-full">
-        <div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
             <!-- Rendered by JS -->
         </div>
     </main>
@@ -138,7 +141,7 @@
         <div class="fixed right-0 top-0 bottom-0 w-full max-w-md bg-[#FAF7F0] shadow-2xl flex flex-col z-10">
             <div class="bg-emerald-brand text-[#FAF7F0] px-6 py-4 flex justify-between items-center">
                 <h3 class="font-display text-lg font-bold">Your Order Basket</h3>
-                <button onclick="toggleCart()" class="text-[#FAF7F0] hover:text-[#C59B27] text-2xl leading-none">&times;</button>
+                <button onclick="toggleCart()" class="text-[#FAF7F0] hover:text-[#C59B27] text-2xl leading-none cursor-pointer">&times;</button>
             </div>
 
             <div id="cart-items" class="flex-grow overflow-y-auto p-6 space-y-4">
@@ -173,8 +176,8 @@
             <p class="text-xs text-gray-600 mb-4">Enter your business WhatsApp number with country code (digits only, e.g. 966501234567) to receive customer orders.</p>
             <input type="text" id="wa-number-input" placeholder="966500000000" class="w-full px-3.5 py-2.5 border rounded-lg text-sm mb-4">
             <div class="flex justify-end gap-2">
-                <button onclick="closeSettingsModal()" class="px-4 py-2 text-sm text-gray-600 hover:bg-gray-100 rounded-lg">Cancel</button>
-                <button onclick="saveWhatsAppNumber()" class="px-4 py-2 text-sm bg-emerald-brand text-white font-semibold rounded-lg">Save Number</button>
+                <button onclick="closeSettingsModal()" class="px-4 py-2 text-sm text-gray-600 hover:bg-gray-100 rounded-lg cursor-pointer">Cancel</button>
+                <button onclick="saveWhatsAppNumber()" class="px-4 py-2 text-sm bg-emerald-brand text-white font-semibold rounded-lg cursor-pointer">Save Number</button>
             </div>
         </div>
     </div>
@@ -184,85 +187,140 @@
         let storeWhatsApp = localStorage.getItem('innus_wa_number') || '966500000000';
 
         const products = [
+            // SNACKS (9 Items)
             {
                 id: 1,
-                name: "Nendran Banana Chips",
+                name: "Madakk (മടക്ക്)",
                 category: "snacks",
-                weight: "250g",
-                price: 15.00,
-                desc: "Thinly sliced raw Nendran bananas fried in 100% pure Kerala coconut oil with a pinch of turmeric & salt.",
-                color: "#F3D37A",
-                accent: "#C59B27"
+                unit: "200 Gram",
+                price: 10.00,
+                desc: "Crispy layered Malabar sweet pastry sheets glazed lightly with sugar syrup and fragrant cardamom.",
+                type: "madakk",
+                bg: "#F8E9C8",
+                primary: "#D99B38",
+                secondary: "#8C5819"
             },
             {
                 id: 2,
-                name: "Sharkara Varatti (Jaggery Chips)",
+                name: "Number 6 (ആറാം നമ്പർ) Sweet",
                 category: "snacks",
-                weight: "250g",
-                price: 18.00,
-                desc: "Thick-cut banana chips coated in melted dark jaggery, dry ginger (chukku), and aromatic cardamom.",
-                color: "#6B3E26",
-                accent: "#3D2214"
+                unit: "200 Gram",
+                price: 6.00,
+                desc: "Classic Kerala crunchy figure-six shaped sweet snack coated in caramelized sugar.",
+                type: "num6_sweet",
+                bg: "#F5E2C4",
+                primary: "#C47D2B",
+                secondary: "#784412"
             },
             {
                 id: 3,
-                name: "Achappam (Rose Cookies)",
+                name: "Number 6 (ആറാം നമ്പർ) Spicy",
                 category: "snacks",
-                weight: "200g (12 pcs)",
-                price: 14.00,
-                desc: "Traditional crispy rosette cookies made with roasted rice flour, fresh coconut milk, and black sesame.",
-                color: "#E8B878",
-                accent: "#9C662B"
+                unit: "200 Gram",
+                price: 6.00,
+                desc: "Crispy figure-six shaped tea-time savory snack seasoned with roasted chilli, garlic, and curry leaves.",
+                type: "num6_spicy",
+                bg: "#F7DCD2",
+                primary: "#B83B28",
+                secondary: "#134631"
             },
             {
                 id: 4,
-                name: "Kuzhalappam",
+                name: "Rava Cake (വെട്ട് കേക്ക്)",
                 category: "snacks",
-                weight: "200g",
-                price: 14.00,
-                desc: "Crunchy rolled rice crisps infused with roasted cumin seeds, shallots, and grated coconut.",
-                color: "#DDA76A",
-                accent: "#8A531E"
+                unit: "200 Gram",
+                price: 5.00,
+                desc: "Traditional Kerala Vettu Cake made with semolina, egg, and cardamom — golden crisp outside and soft inside.",
+                type: "vettu_cake",
+                bg: "#F2DFC8",
+                primary: "#9E5622",
+                secondary: "#592A0C"
             },
             {
                 id: 5,
-                name: "Malabar Biryani Masala",
-                category: "masalas",
-                weight: "100g",
-                price: 16.00,
-                desc: "Slow-roasted & stone-ground blend of green cardamom, cloves, cinnamon, star anise, and mace.",
-                color: "#8C5828",
-                accent: "#4A2C11"
+                name: "Chatti Pathiri (ചട്ടി പത്തിരി)",
+                category: "snacks",
+                unit: "1 Kg",
+                price: 25.00,
+                desc: "Signature Malabar layered delicacy crafted with thin crepes, rich spiced filling, and golden ghee roast.",
+                type: "chatti_pathiri",
+                bg: "#F6E7C8",
+                primary: "#D49B35",
+                secondary: "#7D4E16"
             },
             {
                 id: 6,
-                name: "Kerala Fish Curry Masala",
-                category: "masalas",
-                weight: "150g",
-                price: 15.00,
-                desc: "Authentic Kozhikode-style spice mix with Kashmiri chilli, coriander, fenugreek, and Tellicherry pepper.",
-                color: "#B83B28",
-                accent: "#731D10"
+                name: "Chicken Cutlets",
+                category: "snacks",
+                unit: "1 Piece",
+                price: 2.00,
+                desc: "Golden breadcrumb-crusted cutlet stuffed with spiced shredded chicken, mashed potato, and fresh herbs.",
+                type: "cutlet_chicken",
+                bg: "#F4E0C6",
+                primary: "#C27529",
+                secondary: "#6E3B0E"
             },
             {
                 id: 7,
-                name: "Roasted Chicken Masala",
-                category: "masalas",
-                weight: "150g",
-                price: 15.00,
-                desc: "Rich aromatic spice blend crafted for traditional Varutharacha Kozhi Curry and Kerala chicken roast.",
-                color: "#A34824",
-                accent: "#5C230D"
+                name: "Beef Cutlets",
+                category: "snacks",
+                unit: "1 Piece",
+                price: 2.00,
+                desc: "Authentic Kerala-style crispy beef cutlet seasoned with crushed black pepper, ginger, and garam masala.",
+                type: "cutlet_beef",
+                bg: "#EED7C5",
+                primary: "#8A4726",
+                secondary: "#47200D"
             },
             {
                 id: 8,
-                name: "Wayandan Black Pepper Powder",
+                name: "Chicken Roll",
+                category: "snacks",
+                unit: "1 Piece",
+                price: 3.00,
+                desc: "Crunchy golden fried crepe roll filled with flavorful Malabar spiced chicken masala.",
+                type: "chicken_roll",
+                bg: "#F7E4C6",
+                primary: "#CC842B",
+                secondary: "#7A470F"
+            },
+            {
+                id: 9,
+                name: "Nulli Ittath (നുള്ളി ഇട്ടത്)",
+                category: "snacks",
+                unit: "200 Gram",
+                price: 5.00,
+                desc: "Traditional hand-pinched crispy savory rice & gram flour bites fried with curry leaves and spices.",
+                type: "nulli_ittath",
+                bg: "#F5E4C3",
+                primary: "#C9892A",
+                secondary: "#134631"
+            },
+
+            // MASALAS (2 Items)
+            {
+                id: 10,
+                name: "Kozhikodan Biriyani Masala",
                 category: "masalas",
-                weight: "100g",
-                price: 18.00,
-                desc: "Single-origin bold Wayanad black peppercorns, sun-dried and freshly ground for maximum aroma.",
-                color: "#363938",
-                accent: "#181A19"
+                unit: "200 Gram",
+                price: 10.00,
+                desc: "Authentic Calicut-style aromatic blend of green cardamom, cloves, cinnamon, star anise, and nutmeg.",
+                type: "biriyani_masala",
+                bg: "#E8E2D2",
+                primary: "#7D4E24",
+                secondary: "#134631"
+            },
+            {
+                id: 11,
+                name: "Magic Masala for All Recipes",
+                category: "masalas",
+                unit: "200 Gram",
+                price: 10.00,
+                desc: "All-purpose homemade Kerala spice blend that elevates curries, roasts, fries, and everyday dishes.",
+                type: "magic_masala",
+                bg: "#F2DDD2",
+                primary: "#A83822",
+                secondary: "#C59B27"
             }
         ];
 
@@ -273,14 +331,107 @@
             document.getElementById('header-wa-display').textContent = '+' + storeWhatsApp;
         }
 
-        function getProductIllustration(p) {
+        // Custom Arched Food Illustration SVG for each item (Also supports optional real image URL via p.image)
+        function getArchedIllustration(p) {
+            if (p.image) {
+                return `<img src="${p.image}" alt="${p.name}" class="w-full h-full object-cover">`;
+            }
+
+            let art = '';
+            switch (p.type) {
+                case 'madakk':
+                    art = `
+                        <g transform="translate(100, 95)">
+                            <polygon points="-45,15 0,-12 45,15 0,38" fill="${p.primary}" stroke="${p.secondary}" stroke-width="2"/>
+                            <polygon points="-45,7 0,-20 45,7 0,30" fill="#EBB454" stroke="${p.secondary}" stroke-width="2"/>
+                            <polygon points="-45,-1 0,-28 45,-1 0,22" fill="#F5CA73" stroke="${p.secondary}" stroke-width="2"/>
+                            <circle cx="-10" cy="-2" r="2" fill="#FFF"/>
+                            <circle cx="12" cy="3" r="2" fill="#FFF"/>
+                            <circle cx="0" cy="-10" r="2" fill="#FFF"/>
+                        </g>`;
+                    break;
+                case 'num6_sweet':
+                case 'num6_spicy':
+                    art = `
+                        <g transform="translate(100, 92)">
+                            <path d="M18,-32 C-15,-36 -28,-10 -24,14 C-20,36 16,38 22,18 C26,2 4,-6 -14,6" fill="none" stroke="${p.primary}" stroke-width="11" stroke-linecap="round"/>
+                            <path d="M18,-32 C-15,-36 -28,-10 -24,14 C-20,36 16,38 22,18 C26,2 4,-6 -14,6" fill="none" stroke="${p.secondary}" stroke-width="2" stroke-dasharray="4 6" stroke-linecap="round"/>
+                            ${p.type === 'num6_spicy' ? '<ellipse cx="26" cy="-18" rx="8" ry="4" transform="rotate(-30 26 -18)" fill="#134631"/>' : '<circle cx="24" cy="-18" r="3" fill="#FFF"/>'}
+                        </g>`;
+                    break;
+                case 'vettu_cake':
+                    art = `
+                        <g transform="translate(100, 95)">
+                            <path d="M-36,15 L-26,-16 Q0,-30 26,-16 L36,15 Q0,28 -36,15 Z" fill="${p.primary}" stroke="${p.secondary}" stroke-width="2.5"/>
+                            <path d="M-14,-18 L0,2 L14,-18" fill="none" stroke="#F7D59C" stroke-width="4" stroke-linecap="round"/>
+                            <path d="M0,-22 L0,4" fill="none" stroke="#592A0C" stroke-width="2.5" stroke-linecap="round"/>
+                        </g>`;
+                    break;
+                case 'chatti_pathiri':
+                    art = `
+                        <g transform="translate(100, 95)">
+                            <ellipse cx="0" cy="20" rx="44" ry="14" fill="${p.secondary}"/>
+                            <rect x="-44" y="-8" width="88" height="28" rx="6" fill="${p.primary}"/>
+                            <line x1="-42" y1="0" x2="42" y2="0" stroke="#7D4E16" stroke-width="2.5"/>
+                            <line x1="-42" y1="8" x2="42" y2="8" stroke="#F7D794" stroke-width="2.5"/>
+                            <line x1="-42" y1="15" x2="42" y2="15" stroke="#7D4E16" stroke-width="2.5"/>
+                            <ellipse cx="0" cy="-8" rx="44" ry="14" fill="#E8B654" stroke="${p.secondary}" stroke-width="2"/>
+                            <circle cx="-12" cy="-8" r="3" fill="#7D4E16"/>
+                            <circle cx="14" cy="-6" r="3" fill="#7D4E16"/>
+                        </g>`;
+                    break;
+                case 'cutlet_chicken':
+                case 'cutlet_beef':
+                    art = `
+                        <g transform="translate(100, 95)">
+                            <ellipse cx="-10" cy="10" rx="34" ry="20" fill="${p.secondary}"/>
+                            <ellipse cx="-10" cy="5" rx="34" ry="20" fill="${p.primary}" stroke="${p.secondary}" stroke-width="2"/>
+                            <ellipse cx="16" cy="-4" rx="30" ry="17" fill="#D98A36" stroke="${p.secondary}" stroke-width="2"/>
+                            <circle cx="10" cy="-6" r="1.8" fill="#FFF7E6"/>
+                            <circle cx="22" cy="-2" r="1.8" fill="#FFF7E6"/>
+                            <circle cx="15" cy="3" r="1.8" fill="#FFF7E6"/>
+                        </g>`;
+                    break;
+                case 'chicken_roll':
+                    art = `
+                        <g transform="translate(100, 95) rotate(-18)">
+                            <rect x="-44" y="-14" width="88" height="28" rx="14" fill="${p.primary}" stroke="${p.secondary}" stroke-width="2.5"/>
+                            <ellipse cx="34" cy="0" rx="8" ry="12" fill="#6E3314"/>
+                            <circle cx="34" cy="-3" r="2.5" fill="#E0A84B"/>
+                            <circle cx="33" cy="4" r="2.5" fill="#134631"/>
+                            <line x1="-25" y1="-6" x2="15" y2="-6" stroke="#F7D08A" stroke-width="2" stroke-linecap="round"/>
+                        </g>`;
+                    break;
+                case 'nulli_ittath':
+                    art = `
+                        <g transform="translate(100, 95)">
+                            <path d="M-38,14 Q0,34 38,14 Z" fill="#134631"/>
+                            <circle cx="-18" cy="6" r="8" fill="${p.primary}" stroke="${p.secondary}" stroke-width="1.5"/>
+                            <circle cx="-2" cy="4" r="9" fill="#E0A13B" stroke="${p.secondary}" stroke-width="1.5"/>
+                            <circle cx="16" cy="7" r="8" fill="${p.primary}" stroke="${p.secondary}" stroke-width="1.5"/>
+                            <circle cx="-9" cy="-6" r="8" fill="#E0A13B" stroke="${p.secondary}" stroke-width="1.5"/>
+                            <circle cx="8" cy="-5" r="8" fill="${p.primary}" stroke="${p.secondary}" stroke-width="1.5"/>
+                            <ellipse cx="22" cy="-6" rx="7" ry="3.5" transform="rotate(-25 22 -6)" fill="#134631"/>
+                        </g>`;
+                    break;
+                case 'biriyani_masala':
+                case 'magic_masala':
+                    art = `
+                        <g transform="translate(100, 96)">
+                            <path d="M-34,6 L34,6 L24,26 L-24,26 Z" fill="#134631"/>
+                            <path d="M-30,6 Q0,-26 30,6 Z" fill="${p.primary}"/>
+                            <ellipse cx="-24" cy="-12" rx="7" ry="4" transform="rotate(-30 -24 -12)" fill="#588157"/>
+                            <circle cx="24" cy="-14" r="4" fill="#C59B27"/>
+                            <rect x="16" y="-6" width="18" height="4" rx="2" transform="rotate(20 16 -6)" fill="#6E3B18"/>
+                        </g>`;
+                    break;
+            }
+
             return `
-                <svg viewBox="0 0 200 130" class="w-full h-36 object-cover rounded-t-xl" style="background-color: ${p.color}25;">
-                    <circle cx="100" cy="65" r="45" fill="${p.color}" opacity="0.35"/>
-                    <circle cx="100" cy="65" r="32" fill="${p.color}"/>
-                    <path d="M75 65 Q100 40 125 65 Q100 90 75 65 Z" fill="${p.accent}" opacity="0.65"/>
-                    <circle cx="92" cy="60" r="4" fill="#FAF7F0" opacity="0.8"/>
-                    <circle cx="108" cy="68" r="3" fill="#FAF7F0" opacity="0.8"/>
+                <svg viewBox="0 0 200 165" class="w-full h-full">
+                    <rect width="200" height="165" fill="${p.bg}"/>
+                    <circle cx="100" cy="88" r="56" fill="#FFFFFF" opacity="0.55"/>
+                    ${art}
                 </svg>
             `;
         }
@@ -294,34 +445,41 @@
             grid.innerHTML = filtered.map(p => {
                 const qty = cart[p.id] || 0;
                 return `
-                    <div class="bg-white rounded-xl border border-[#E5DEC9] shadow-xs hover:shadow-md transition flex flex-col justify-between overflow-hidden">
+                    <div class="bg-white rounded-2xl border border-[#E5DEC9] shadow-xs hover:shadow-md transition flex flex-col justify-between overflow-hidden">
                         <div>
-                            <div class="relative">
-                                ${getProductIllustration(p)}
-                                <span class="absolute top-3 left-3 bg-[#134631] text-[#FAF7F0] text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full">
-                                    ${p.category}
-                                </span>
-                                <span class="absolute bottom-2 right-3 bg-white/90 text-emerald-brand text-xs font-semibold px-2 py-0.5 rounded">
-                                    ${p.weight}
-                                </span>
+                            <!-- Arched Image Header -->
+                            <div class="pt-4 px-4">
+                                <div class="relative h-44 w-full arched-frame overflow-hidden border-2 border-[#C59B27]/50 shadow-inner">
+                                    ${getArchedIllustration(p)}
+                                    <span class="absolute top-3 left-1/2 -translate-x-1/2 bg-[#134631]/90 text-[#FAF7F0] text-[10px] font-bold uppercase tracking-wider px-3 py-0.5 rounded-full shadow-xs">
+                                        ${p.category}
+                                    </span>
+                                    <span class="absolute bottom-2 right-2 bg-white/95 text-emerald-brand text-[11px] font-bold px-2.5 py-0.5 rounded-md shadow-xs">
+                                        ${p.unit}
+                                    </span>
+                                </div>
                             </div>
-                            <div class="p-4">
+
+                            <div class="p-4 text-center">
                                 <h3 class="font-bold text-base text-emerald-brand mb-1">${p.name}</h3>
                                 <p class="text-xs text-gray-600 line-clamp-3 leading-relaxed">${p.desc}</p>
                             </div>
                         </div>
 
-                        <div class="px-4 pb-4 pt-2 flex items-center justify-between border-t border-gray-100">
-                            <span class="font-bold text-emerald-brand">SAR ${p.price.toFixed(2)}</span>
+                        <div class="px-4 pb-4 pt-3 flex items-center justify-between border-t border-gray-100 bg-[#FAF7F0]/50">
+                            <div>
+                                <span class="text-[10px] uppercase tracking-wider text-gray-500 block">Price</span>
+                                <span class="font-bold text-base text-emerald-brand">SAR ${p.price.toFixed(2)}</span>
+                            </div>
                             ${qty === 0 ? `
-                                <button onclick="updateQty(${p.id}, 1)" class="bg-emerald-brand hover:bg-[#0D3323] text-[#FAF7F0] text-xs font-semibold px-3.5 py-2 rounded-lg transition cursor-pointer">
+                                <button onclick="updateQty(${p.id}, 1)" class="bg-emerald-brand hover:bg-[#0D3323] text-[#FAF7F0] text-xs font-semibold px-4 py-2.5 rounded-xl transition cursor-pointer shadow-xs">
                                     + Add
                                 </button>
                             ` : `
-                                <div class="flex items-center gap-2 bg-[#F0EAE0] rounded-lg px-2 py-1">
-                                    <button onclick="updateQty(${p.id}, -1)" class="w-6 h-6 rounded bg-white text-emerald-brand font-bold hover:bg-gray-100 cursor-pointer">-</button>
-                                    <span class="text-xs font-bold w-4 text-center">${qty}</span>
-                                    <button onclick="updateQty(${p.id}, 1)" class="w-6 h-6 rounded bg-emerald-brand text-white font-bold hover:bg-[#0D3323] cursor-pointer">+</button>
+                                <div class="flex items-center gap-2 bg-[#F0EAE0] rounded-xl px-2.5 py-1.5 border border-[#DED5C5]">
+                                    <button onclick="updateQty(${p.id}, -1)" class="w-6 h-6 rounded-lg bg-white text-emerald-brand font-bold hover:bg-gray-100 cursor-pointer">-</button>
+                                    <span class="text-xs font-bold w-5 text-center">${qty}</span>
+                                    <button onclick="updateQty(${p.id}, 1)" class="w-6 h-6 rounded-lg bg-emerald-brand text-white font-bold hover:bg-[#0D3323] cursor-pointer">+</button>
                                 </div>
                             `}
                         </div>
@@ -384,14 +542,19 @@
 
                 return `
                     <div class="flex items-center justify-between bg-white p-3 rounded-xl border border-[#E5DEC9]">
-                        <div>
-                            <h4 class="font-bold text-sm text-emerald-brand">${item.name}</h4>
-                            <p class="text-xs text-gray-500">${item.weight} &bull; SAR ${item.price.toFixed(2)} each</p>
+                        <div class="flex items-center gap-3">
+                            <div class="w-11 h-12 arched-frame overflow-hidden border border-[#C59B27]/50 shrink-0">
+                                ${getArchedIllustration(item)}
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-sm text-emerald-brand">${item.name}</h4>
+                                <p class="text-xs text-gray-500">${item.unit} &bull; SAR ${item.price.toFixed(2)} each</p>
+                            </div>
                         </div>
                         <div class="flex items-center gap-2">
-                            <button onclick="updateQty(${item.id}, -1)" class="w-7 h-7 rounded bg-[#F0EAE0] text-emerald-brand font-bold">-</button>
+                            <button onclick="updateQty(${item.id}, -1)" class="w-7 h-7 rounded bg-[#F0EAE0] text-emerald-brand font-bold cursor-pointer">-</button>
                             <span class="text-sm font-bold w-5 text-center">${qty}</span>
-                            <button onclick="updateQty(${item.id}, 1)" class="w-7 h-7 rounded bg-emerald-brand text-white font-bold">+</button>
+                            <button onclick="updateQty(${item.id}, 1)" class="w-7 h-7 rounded bg-emerald-brand text-white font-bold cursor-pointer">+</button>
                         </div>
                     </div>
                 `;
@@ -437,7 +600,7 @@
                 const item = products.find(p => p.id == id);
                 const sub = item.price * qty;
                 total += sub;
-                lines.push(`${idx + 1}. ${item.name} (${item.weight}) x ${qty} = SAR ${sub.toFixed(2)}`);
+                lines.push(`${idx + 1}. ${item.name} (${item.unit}) x ${qty} = SAR ${sub.toFixed(2)}`);
             });
 
             lines.push(`--------------------------`);
